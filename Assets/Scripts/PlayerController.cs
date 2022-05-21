@@ -19,20 +19,21 @@ public class PlayerController : MonoBehaviour
     private float timer_espera = 0f;
     public float timer_demora = 0.3f;
 
+    private int vida = 3;
 
-    // Start is called before the first frame update
+
     void Start()
     {
 
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         Movimento(); //metodo de movimento do player
 
-        Atirando(); //Método de atirar do player
+        Atirando(); //Método de atirar do player        
 
     }
 
@@ -69,7 +70,19 @@ public class PlayerController : MonoBehaviour
         movimento.y = Mathf.Clamp(movimento.y, yMin, yMax);
 
         transform.position = movimento; //O meu transform.position vai ser igual meu movimento
+    }
+
+    public void PerdeVida()
+    {
+        vida--;
+
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
 
     }
+
+
 
 }

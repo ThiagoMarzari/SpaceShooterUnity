@@ -43,8 +43,6 @@ public class GameController : MonoBehaviour
     }
 
 
-
-
     private void GanhaPontos() //Arrumar
     {
 
@@ -56,15 +54,9 @@ public class GameController : MonoBehaviour
             level++; //Incremento em 1
 
             proximoLevel *= level;
-        }
-
-        //Debugs
-        Debug.Log(proximoLevel);
+        }        
+        
     }
-
-
-
-
 
     private void CriaInimigo()
     {

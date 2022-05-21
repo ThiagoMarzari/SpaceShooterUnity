@@ -24,7 +24,7 @@ public class Tiro : MonoBehaviour
         }
     }
 
-    //Meu evento de trigger com o inimigo
+    /*Meu evento de trigger com o inimigo
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         //Esse evento vai rodar sempre que ele tiver uma "Colisão " com alguem
@@ -39,6 +39,23 @@ public class Tiro : MonoBehaviour
 
         //Me destruindo
         Destroy(gameObject);
+
     }
+        */
+    private void OnTriggerEnter2D(Collider2D collision)
+    {        
+        if (collision.CompareTag("inimigo"))
+        {
+            Destroy(collision.gameObject); //Destruindo o inimigo
+
+            Destroy(gameObject); //Me destruindo
+
+            collision.GetComponent<Inimigo>().Morrendo();
+
+        }
+
+    }
+
+
 
 }
