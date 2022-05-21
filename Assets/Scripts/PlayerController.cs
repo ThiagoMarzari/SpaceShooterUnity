@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,20 +23,23 @@ public class PlayerController : MonoBehaviour
     public float timer_demora = 0.3f;
 
     private int vida = 3;
+    [SerializeField] private Text vidaUI;
+
 
 
     void Start()
     {
 
-
     }
 
-    
+
     void Update()
     {
         Movimento(); //metodo de movimento do player
 
         Atirando(); //Método de atirar do player        
+
+        vidaUI.text = vida.ToString();
 
     }
 
@@ -75,10 +81,12 @@ public class PlayerController : MonoBehaviour
     public void PerdeVida()
     {
         vida--;
+        vidaUI.text = vida.ToString();
 
         if (vida <= 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene(0);
         }
 
     }
