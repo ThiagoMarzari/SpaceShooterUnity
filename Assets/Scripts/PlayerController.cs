@@ -9,12 +9,12 @@ public class PlayerController : MonoBehaviour
     //Pegando o meu tiro
     public GameObject meuTiro;
 
-    public float x = 2.2f;
+    private float x = 8.3f;
+    private float yMin = -5f;
+    private float yMax = 4.15f;
 
     //Pegando o audio
     public AudioClip somTiro;
-
-
     //Alarme
     private float timer_espera = 0f;
     public float timer_demora = 0.3f;
@@ -62,9 +62,11 @@ public class PlayerController : MonoBehaviour
         Vector3 movimento = transform.position;  //Passadno meu vector3 para o meu transform.position
 
         movimento.x += Input.GetAxis("Horizontal") * velocidade * Time.deltaTime; //Movimento do player horizontal
+        movimento.y += Input.GetAxis("Vertical") * velocidade * Time.deltaTime;
 
         //Garatindo que o player não saia do limite X da tela
         movimento.x = Mathf.Clamp(movimento.x, -x, x);
+        movimento.y = Mathf.Clamp(movimento.y, yMin, yMax);
 
         transform.position = movimento; //O meu transform.position vai ser igual meu movimento
 
